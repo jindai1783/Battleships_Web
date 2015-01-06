@@ -1,8 +1,8 @@
-require 'sinatra/base'
+require 'sinatra'
 
 class BattleShips < Sinatra::Base
   get '/' do
-    'Hello BattleShips!'
+    erb :index
   end
 
   # start the server if ruby file executed directly
