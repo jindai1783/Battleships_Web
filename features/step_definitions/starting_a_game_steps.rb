@@ -22,4 +22,18 @@ Then(/^I shall see "(.*?)"$/) do |arg1|
   page.should have_content arg1
 end
 
-# All tests passing but not sure why... Prob with last two tests
+When(/^I click submit without entering a name$/) do
+  fill_in("name", :with => "") 
+end
+
+When(/^I click submit$/) do
+  click_button('Please Go Back')
+end
+
+Given(/^I am on the Start page$/) do
+  visit '/start'
+end
+
+Then(/^I enter a ship on co\-ordinate "(.*?)"$/) do |arg1|
+  fill_in("co-ordinate", :with => arg1 )
+end
