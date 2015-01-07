@@ -26,8 +26,8 @@ When(/^I click submit without entering a name$/) do
   fill_in("name", :with => "") 
 end
 
-When(/^I click submit$/) do
-  click_button('Please Go Back')
+When(/^I click "(.*?)"$/) do |button|
+  click_button(button)
 end
 
 Given(/^I am on the Start page$/) do

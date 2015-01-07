@@ -1,7 +1,11 @@
 <html>
-  <form action="/start">
+  <% if @coordinate and @coordinate != "" %>
+    ship placed on A1
+  <% else %>
+    <form action="/start">
       Please place your ship
       <input type="text" name="co-ordinate">
-      <input type="submit">
+      <input type="submit" value="Submit">
     </form>
+  <% end %>
 </html>

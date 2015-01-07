@@ -12,12 +12,20 @@ class BattleShips < Sinatra::Base
 
   get '/start' do
     @name = params[:name]
-    @coordinate = params[:start]
+    @coordinate = params["co-ordinate"]
     if @name == "" 
       erb :try_again
     else
       erb :start 
     end
+  end
+
+  get '/action' do
+    board = Board.new(Water)
+    battleship = Ship.new(5)
+    submarine = Ship.new(5)
+    destroyer = Ship.new(5)
+    @name = Player.new
   end
 
   get '/try_again' do

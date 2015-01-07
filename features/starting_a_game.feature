@@ -17,11 +17,12 @@ Feature: Starting the game
     Then I should see "What's your name?"
     When I click submit without entering a name
     Then I shall be redirected to "/try_again"
-    When I click submit
+    When I click "Please Go Back"
     Then I shall be redirected to "/new"
 
   Scenario: Start a game
     Given I am on the Start page
     Then I shall see "Please place your ship"
     Then I enter a ship on co-ordinate "A1"
+    Then I click "Submit"
     Then I shall see "ship placed on A1"
