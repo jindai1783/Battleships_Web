@@ -11,7 +11,7 @@ Then(/^I should see "(.*?)"$/) do |arg1|
 end
 
 Then(/^I enter "(.*?)"$/) do |arg1|
-  fill_in("name", :with => arg1) 
+  fill_in("user", :with => arg1) 
 end
 
 Then(/^I shall be redirected to "(.*?)"$/) do |arg1|
@@ -19,11 +19,11 @@ Then(/^I shall be redirected to "(.*?)"$/) do |arg1|
 end
 
 Then(/^I shall see "(.*?)"$/) do |arg1|
-  page.should have_content arg1
+  page.has_content? arg1 
 end
 
 When(/^I click submit without entering a name$/) do
-  fill_in("name", :with => "") 
+  fill_in("user", :with => "") 
 end
 
 When(/^I click "(.*?)"$/) do |button|
@@ -34,6 +34,6 @@ Given(/^I am on the Start page$/) do
   visit '/start'
 end
 
-Then(/^I enter a ship on co\-ordinate "(.*?)"$/) do |arg1|
-  fill_in("co-ordinate", :with => arg1 )
+Then(/^I enter a ship on coordinate "(.*?)"$/) do |arg1|
+  fill_in("coordinate", :with => arg1 )
 end

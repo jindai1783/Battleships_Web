@@ -1,6 +1,8 @@
 require 'sinatra'
 
 class BattleShips < Sinatra::Base
+
+  enable :sessions
   
   get '/' do
     erb :index
@@ -10,13 +12,31 @@ class BattleShips < Sinatra::Base
     erb :name
   end
 
-  get '/start' do
-    @name = params[:name]
-    @coordinate = params["co-ordinate"]
-    if @name == "" 
-      erb :try_again
+  post '/new' do
+    if params[:user].empty?
+      @error = "You didn't enter a name"
+      erb :name
     else
-      erb :start 
+      @user = params[:user]
+      erb :start
+    end
+
+  end
+
+  get '/start' do
+    session[:ship_coord] = []
+    erb :start 
+  end
+
+  post '/start' do
+    if params[:coordinate].empty?
+      @error_coord = "You didn't enter a co-ordinate"
+      erb :start
+    else
+      @coordinate = params[:coordinate]
+      session[:ship_coord] << @coordinate
+      @ship_coord = session[:ship_coord]
+      erb :start
     end
   end
 
@@ -32,9 +52,10 @@ class BattleShips < Sinatra::Base
     erb :try_again
   end
 
-  # get '/start' do
-  #   @coordinate = params[:start]
-  # end
+  get '/position' do
+    @coordinate = params[:start]
+    erb :position2
+  end  
 
   # start the server if ruby file executed directly
   # run! if app_file == $0

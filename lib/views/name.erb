@@ -1,7 +1,15 @@
 <html>
-  <form action="/start">
+<%if @error %>
+  <%= @error %>
+<%end%>
+  <% if @name %>
+    <% @name = name %>
+    <% erb :start %>
+  <% else %>
+    <form action="/new" method="post">
       What's your name?
-      <input type="text" name="name">
-      <input type="submit">
-    </form>
+      <input type="text" name="user">
+      <input type="submit"> 
+    </form>  
+  <% end %>
 </html>

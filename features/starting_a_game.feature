@@ -23,6 +23,5 @@ Feature: Starting the game
   Scenario: Start a game
     Given I am on the Start page
     Then I shall see "Please place your ship"
-    Then I enter a ship on co-ordinate "A1"
-    Then I click "Submit"
-    Then I shall see "ship placed on A1"
+    Then I enter a ship on coordinate "A1"
+    Then I shall see "You have successfully placed a ship"

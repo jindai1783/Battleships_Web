@@ -1,11 +1,15 @@
 <html>
-  <% if @coordinate and @coordinate != "" %>
-    ship placed on A1
-  <% else %>
-    <form action="/start">
+  <%if @error_coord %>
+    <%= @error_coord %>
+  <%end%>
+  <%if @coordinate %>
+    You have successfully placed a ship
+    <bold><%= @ship_coord %></bold>
+    You have placed <%= @ship_coord.size %> ships
+  <%end%>
+    <form action="/start" method="post">
       Please place your ship
-      <input type="text" name="co-ordinate">
-      <input type="submit" value="Submit">
+      <input type="text" name="coordinate">
+      <input type="submit">
     </form>
-  <% end %>
 </html>
